@@ -5,6 +5,7 @@ export interface ICompany {
     document: string;
     address: CompanyAddress;
     phone: string;
+    password: string;
     email: string;
 }
 

@@ -2,13 +2,14 @@ import 'reflect-metadata'
 import { ICreateCompanyDTO } from './../../dto/createCompany.dto';
 import { CreateCompanyService } from './createCompany.service';
 import { MockCompanyRepository } from './../../repository/mock/mockCompany.repository';
+import { Crypto } from '../../../../shared/cryptography/implementation/crypto';
 
 describe("Create Company", () => {
 
     let createCompanyService = {} as CreateCompanyService;
 
     beforeEach(() => {
-        createCompanyService = new CreateCompanyService(new MockCompanyRepository())
+        createCompanyService = new CreateCompanyService(new MockCompanyRepository(), new Crypto())
     })
 
     it("should be able to create a Company", async() => {
@@ -26,6 +27,7 @@ describe("Create Company", () => {
            },
            email: "teste@mail.com",
            fantasyName: "TESTE COMPANY",
+           password: "Teste@123",
            phone: "12324242"
         } as ICreateCompanyDTO;
 
@@ -47,6 +49,7 @@ describe("Create Company", () => {
                state: "SP",
                zipCode: "04836400"
            },
+           password: "Teste@123",
            email: "teste@mail.com",
            fantasyName: "TESTE COMPANY",
            phone: "12324242"
@@ -65,7 +68,8 @@ describe("Create Company", () => {
                 state: "SP",
                 zipCode: "04836400"
             },
-            email: "teste@mail.com",
+           password: "Teste@123",
+           email: "teste@mail.com",
             fantasyName: "TESTE COMPANY",
             phone: "12324242"
          } as ICreateCompanyDTO;
@@ -89,6 +93,7 @@ describe("Create Company", () => {
                zipCode: "04836400"
            },
            email: "teste@mail.com",
+           password: "Teste@123",
            fantasyName: "TESTE COMPANY",
            phone: "12324242"
         } as ICreateCompanyDTO;
@@ -108,7 +113,8 @@ describe("Create Company", () => {
             },
             email: "teste@mail.com",
             fantasyName: "TESTE COMPANY",
-            phone: "12324242"
+           password: "Teste@123",
+           phone: "12324242"
          } as ICreateCompanyDTO;
  
         await createCompanyService.execute({company: companyDTO2}).catch(error => {

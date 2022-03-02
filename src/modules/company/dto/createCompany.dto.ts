@@ -4,6 +4,7 @@ export interface ICreateCompanyDTO {
     document: string;
     address: CompanyAddress;
     phone: string;
+    password: string;
     email: string;
 }
 
